@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center_horizontal"
+    android:orientation="vertical"
+    android:background="@color/white"
+    android:padding="15dp"
+    tools:context=".Activities.LoginActivity">
+
+    <ImageView
+        android:transitionName="ok"
+        android:id="@+id/logocup"
+        android:layout_width="200dp"
+        android:layout_height="100dp"
+        android:padding="20dp"
+        android:src="@drawable/logocupid"
+        android:elevation="0dp" />
+
+    <EditText
+        android:id="@+id/username"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:textSize="20sp"
+        android:hint="Email / Username"
+        android:padding="8dp"
+        android:textColorHint="#716F6F"
+        android:textColor="@color/black"
+        android:background="@drawable/rounders"
+        android:inputType="textEmailAddress" />
+
+    <EditText
+        android:id="@+id/password"
+        android:textSize="20sp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:hint="Password"
+        android:padding="8dp"
+        android:textColorHint="#716F6F"
+        android:outlineProvider="bounds"
+        android:outlineSpotShadowColor="@color/teal_200"
+        android:textColor="@color/black"
+        android:background="@drawable/rounders"
+        android:inputType="textPassword" />
+
+    <CheckBox
+        android:id="@+id/showpass"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="left"
+        android:padding="15dp"
+        android:buttonTint="@color/black"
+        android:text="Show Password"
+        android:textColor="@color/black" />
+
+    <Button
+        android:id="@+id/login"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="LOGIN"
+        android:backgroundTint="@color/purple_700"
+        android:textColor="@color/white" />
+
+    <LinearLayout
+        android:padding="12dp"
+        android:layout_width="wrap_content"
+        android:orientation="horizontal"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:textColor="@color/black"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Don't Have an account "
+            android:textSize="12dp"
+            android:paddingVertical="12dp" />
+
+        <TextView
+            android:id="@+id/move_to_signup"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingVertical="12dp"
+            android:text="Click Here"
+            android:textColor="@color/purple_700"
+            android:textSize="12dp" />
+
+    </LinearLayout>
+
+
+</LinearLayout>

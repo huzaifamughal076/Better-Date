@@ -1,0 +1,17 @@
+<component name="libraryTable">
+  <library name="Gradle: com.github.MAXDeliveryNG:slideview:1.1.0@aar">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/01d2fc7fdb8a8ab29ae1707044738662/jetified-slideview-1.1.0/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/01d2fc7fdb8a8ab29ae1707044738662/jetified-slideview-1.1.0/res" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/01d2fc7fdb8a8ab29ae1707044738662/jetified-slideview-1.1.0/AndroidManifest.xml" />
+      <root url="file://$USER_HOME$/Downloads/COVID-19Tracker-master/COVID-19Tracker-master/.gradle/caches/transforms-2/files-2.1/1b869407b8e0a6a1e7c6a31ccdf578bc/jetified-slideview-1.1.0/res" />
+      <root url="file://$USER_HOME$/Downloads/COVID-19Tracker-master/COVID-19Tracker-master/.gradle/caches/transforms-2/files-2.1/1b869407b8e0a6a1e7c6a31ccdf578bc/jetified-slideview-1.1.0/AndroidManifest.xml" />
+      <root url="jar://$USER_HOME$/Downloads/COVID-19Tracker-master/COVID-19Tracker-master/.gradle/caches/transforms-2/files-2.1/1b869407b8e0a6a1e7c6a31ccdf578bc/jetified-slideview-1.1.0/jars/classes.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.github.MAXDeliveryNG/slideview/1.1.0/acb801769a5ee0d95063d7aa6adfa92438dd901e/slideview-1.1.0-sources.jar!/" />
+      <root url="jar://$USER_HOME$/Downloads/COVID-19Tracker-master/COVID-19Tracker-master/.gradle/caches/modules-2/files-2.1/com.github.MAXDeliveryNG/slideview/1.1.0/acb801769a5ee0d95063d7aa6adfa92438dd901e/slideview-1.1.0-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>
