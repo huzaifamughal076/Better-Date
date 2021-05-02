@@ -3,6 +3,7 @@ package com.example.cupid.Activities;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.DatePickerDialog;
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -154,10 +155,14 @@ public class SignUpActivity extends AppCompatActivity {
 
         String url= "http://api.betterdate.info/endpoints/signup.php";
 
+        ProgressDialog dialog = ProgressDialog.show(SignUpActivity.this, "",
+                "Loading. Please wait...", true);
+
         StringRequest request=new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
 
+                dialog.dismiss();
                 try {
                     JSONObject object=new JSONObject(response);
 

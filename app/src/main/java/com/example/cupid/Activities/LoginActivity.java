@@ -4,6 +4,7 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.ActivityOptions;
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -115,11 +116,16 @@ public class LoginActivity extends AppCompatActivity {
 
         String login_url = "http://api.betterdate.info/endpoints/signin.php";
 
+        ProgressDialog dialog = ProgressDialog.show(LoginActivity.this, "",
+                "Logging in. Please wait...", true);
+
         StringRequest request = new StringRequest(Request.Method.POST, login_url, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
 
                 try {
+
+                    dialog.dismiss();
                     JSONObject object = new JSONObject(response);
                     String status = object.getString("status");
                     String message = object.getString("message");

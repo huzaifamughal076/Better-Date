@@ -1,5 +1,6 @@
 package com.example.cupid.LikesFragment;
 
+import android.app.ProgressDialog;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 
@@ -101,6 +102,8 @@ public class first_fragment extends Fragment {
         likes_card = new ArrayList<>();
 
         likesRecycler = v.findViewById(R.id.likesRecycler);
+        ProgressDialog dialog = ProgressDialog.show(getActivity(), "",
+                "Loading. Please wait...", true);
 
         JsonArrayRequest request = new JsonArrayRequest(Request.Method.GET, url, null, new Response.Listener<JSONArray>() {
             @Override
@@ -108,6 +111,7 @@ public class first_fragment extends Fragment {
 
                 for (int i = 0; i < response.length(); i++) {
                     try {
+                        dialog.dismiss();
                         JSONObject liked_user = response.getJSONObject(i);
 
                         String name = liked_user.getString("userName");

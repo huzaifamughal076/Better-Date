@@ -1,5 +1,6 @@
 package com.example.cupid.Fragments;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -116,11 +117,14 @@ public class ProfileFragment extends Fragment {
         String userId = sharedPreferences.getString("userid", "");
 
         String url = "http://api.betterdate.info/endpoints/user.php";
+        ProgressDialog dialog = ProgressDialog.show(getActivity(), "",
+                "Loading. Please wait...", true);
 
         StringRequest request = new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
                 try {
+                    dialog.dismiss();
                     JSONArray array = new JSONArray(response);
 
                     for (int i = 0; i < array.length(); i++) {
