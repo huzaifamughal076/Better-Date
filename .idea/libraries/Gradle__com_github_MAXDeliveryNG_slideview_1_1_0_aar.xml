@@ -7,6 +7,9 @@
       <root url="file://$USER_HOME$/Downloads/COVID-19Tracker-master/COVID-19Tracker-master/.gradle/caches/transforms-2/files-2.1/1b869407b8e0a6a1e7c6a31ccdf578bc/jetified-slideview-1.1.0/res" />
       <root url="file://$USER_HOME$/Downloads/COVID-19Tracker-master/COVID-19Tracker-master/.gradle/caches/transforms-2/files-2.1/1b869407b8e0a6a1e7c6a31ccdf578bc/jetified-slideview-1.1.0/AndroidManifest.xml" />
       <root url="jar://$USER_HOME$/Downloads/COVID-19Tracker-master/COVID-19Tracker-master/.gradle/caches/transforms-2/files-2.1/1b869407b8e0a6a1e7c6a31ccdf578bc/jetified-slideview-1.1.0/jars/classes.jar!/" />
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/0ff012be8dc5e599b0bb99006d47e6a7/jetified-slideview-1.1.0/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/0ff012be8dc5e599b0bb99006d47e6a7/jetified-slideview-1.1.0/res" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/0ff012be8dc5e599b0bb99006d47e6a7/jetified-slideview-1.1.0/AndroidManifest.xml" />
     </CLASSES>
     <JAVADOC />
     <SOURCES>

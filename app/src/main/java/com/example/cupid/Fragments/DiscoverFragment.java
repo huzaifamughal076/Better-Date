@@ -1,5 +1,7 @@
 package com.example.cupid.Fragments;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -20,6 +22,7 @@ import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.example.cupid.Activities.FullProfileActivity;
+import com.example.cupid.Activities.LiveActivity;
 import com.example.cupid.Adapter.CardsAdapter;
 import com.example.cupid.Model.CardItem_test;
 import com.example.cupid.R;
@@ -33,6 +36,7 @@ import java.util.Calendar;
 import java.util.HashMap;
 import java.util.Map;
 
+import de.hdodenhof.circleimageview.CircleImageView;
 import link.fls.swipestack.SwipeStack;
 
 import static android.content.Context.MODE_PRIVATE;
@@ -43,6 +47,8 @@ import static android.content.Context.MODE_PRIVATE;
  * create an instance of this fragment.
  */
 public class DiscoverFragment extends Fragment {
+
+    CircleImageView goLive;
 
     private SwipeStack cardStack;
     private CardsAdapter cardsAdapter;
@@ -100,6 +106,8 @@ public class DiscoverFragment extends Fragment {
         // Inflate the layout for this fragment
         View v = inflater.inflate(R.layout.fragment_discover, container, false);
 
+        goLive = v.findViewById(R.id.golive);
+
         See_full_profile = v.findViewById(R.id.SeeFullProfile);
         cardStack = (SwipeStack) v.findViewById(R.id.container);
 
@@ -109,6 +117,25 @@ public class DiscoverFragment extends Fragment {
         SharedPreferences sharedPreferences = this.getActivity().getSharedPreferences("Questoins", MODE_PRIVATE);
         String userId = sharedPreferences.getString("userid", "");
 
+        goLive.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                new AlertDialog.Builder(getContext())
+                        .setTitle("You are about to go LIVE!")
+                        .setMessage("Are you sure?")
+                        .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int which) {
+                                Intent i = new Intent(getActivity(), LiveActivity.class);
+                                startActivity(i);
+                            }
+                        })
+                        .setNegativeButton(android.R.string.no, null)
+                        .setIcon(android.R.drawable.ic_dialog_alert)
+                        .show();
+
+            }
+        });
 
         //Handling swipe event of Cards stack
         cardStack.setListener(new SwipeStack.SwipeStackListener() {
