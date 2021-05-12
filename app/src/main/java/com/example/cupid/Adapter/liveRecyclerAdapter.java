@@ -12,6 +12,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.cupid.Model.CardItem_test;
+import com.example.cupid.Model.LiveModel;
 import com.example.cupid.R;
 import com.squareup.picasso.Picasso;
 
@@ -22,21 +23,21 @@ import de.hdodenhof.circleimageview.CircleImageView;
 public class liveRecyclerAdapter extends RecyclerView.Adapter<liveRecyclerAdapter.MyViewHolder> {
     private liveRecyclerAdapter.OnItemClickListener mListener;
 
+    private OnItemClickListener mListner;
 
     public interface OnItemClickListener {
         void onItemClick(int position);
 
     }
-
     public void setOnItemClickListener(liveRecyclerAdapter.OnItemClickListener listener) {
         mListener = listener;
     }
 
 
     private Context mcontext;
-    private List<CardItem_test> mData;
+    private List<LiveModel> mData;
 
-    public liveRecyclerAdapter(Context mcontext, List<CardItem_test> mData) {
+    public liveRecyclerAdapter(Context mcontext, List<LiveModel> mData) {
         this.mcontext = mcontext;
         this.mData = mData;
     }
@@ -78,6 +79,18 @@ public class liveRecyclerAdapter extends RecyclerView.Adapter<liveRecyclerAdapte
 
 
             live_img=itemView.findViewById(R.id.live_id);
+
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    if (listener!= null){
+                        int position=getAdapterPosition();
+                        if (position!=RecyclerView.NO_POSITION){
+                            listener.onItemClick(position);
+                        }
+                    }
+                }
+            });
 
             live_img.setOnClickListener(new View.OnClickListener() {
                 @Override

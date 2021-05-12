@@ -7,12 +7,11 @@
     android:background="@color/white"
     tools:context=".Activities.HomeScreen">
 
-<FrameLayout
-    android:id="@+id/frame"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:layout_above="@+id/bottom_navigation"/>
-
+    <FrameLayout
+        android:id="@+id/frame"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/bottom_navigation" />
 
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
@@ -24,6 +23,8 @@
         app:itemIconTint="@color/white"
         app:itemTextColor="@color/white"
         app:menu="@menu/bottom_navigation_menu" />
+
+
 
 
 </RelativeLayout>

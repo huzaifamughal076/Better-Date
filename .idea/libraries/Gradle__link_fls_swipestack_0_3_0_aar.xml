@@ -1,23 +1,15 @@
 <component name="libraryTable">
   <library name="Gradle: link.fls:swipestack:0.3.0@aar">
     <CLASSES>
-      <root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/eb0550fe0535b632b6b0f46c8dc11c2c/jetified-swipestack-0.3.0/jars/classes.jar!/" />
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/eb0550fe0535b632b6b0f46c8dc11c2c/jetified-swipestack-0.3.0/res" />
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/eb0550fe0535b632b6b0f46c8dc11c2c/jetified-swipestack-0.3.0/AndroidManifest.xml" />
-      <root url="file://$USER_HOME$/Downloads/COVID-19Tracker-master/COVID-19Tracker-master/.gradle/caches/transforms-2/files-2.1/68a7ecf77184ff6b5e63b5efd707bb5c/jetified-swipestack-0.3.0/res" />
-      <root url="jar://$USER_HOME$/Downloads/COVID-19Tracker-master/COVID-19Tracker-master/.gradle/caches/transforms-2/files-2.1/68a7ecf77184ff6b5e63b5efd707bb5c/jetified-swipestack-0.3.0/jars/classes.jar!/" />
-      <root url="file://$USER_HOME$/Downloads/COVID-19Tracker-master/COVID-19Tracker-master/.gradle/caches/transforms-2/files-2.1/68a7ecf77184ff6b5e63b5efd707bb5c/jetified-swipestack-0.3.0/AndroidManifest.xml" />
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/ff9cb682d570011d30bfb7c4eb6210b6/jetified-swipestack-0.3.0/AndroidManifest.xml" />
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/ff9cb682d570011d30bfb7c4eb6210b6/jetified-swipestack-0.3.0/res" />
       <root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/ff9cb682d570011d30bfb7c4eb6210b6/jetified-swipestack-0.3.0/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/ff9cb682d570011d30bfb7c4eb6210b6/jetified-swipestack-0.3.0/res" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/ff9cb682d570011d30bfb7c4eb6210b6/jetified-swipestack-0.3.0/AndroidManifest.xml" />
     </CLASSES>
     <JAVADOC>
       <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/link.fls/swipestack/0.3.0/ff89092d5ac93239db2b55baccaef47510d520f2/swipestack-0.3.0-javadoc.jar!/" />
-      <root url="jar://$USER_HOME$/Downloads/COVID-19Tracker-master/COVID-19Tracker-master/.gradle/caches/modules-2/files-2.1/link.fls/swipestack/0.3.0/ff89092d5ac93239db2b55baccaef47510d520f2/swipestack-0.3.0-javadoc.jar!/" />
     </JAVADOC>
     <SOURCES>
       <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/link.fls/swipestack/0.3.0/f6fdb148af9ed43018857fec268d17b6efad9787/swipestack-0.3.0-sources.jar!/" />
-      <root url="jar://$USER_HOME$/Downloads/COVID-19Tracker-master/COVID-19Tracker-master/.gradle/caches/modules-2/files-2.1/link.fls/swipestack/0.3.0/f6fdb148af9ed43018857fec268d17b6efad9787/swipestack-0.3.0-sources.jar!/" />
     </SOURCES>
   </library>
 </component>

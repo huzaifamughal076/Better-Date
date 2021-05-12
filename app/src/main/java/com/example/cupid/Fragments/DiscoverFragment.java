@@ -7,10 +7,13 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.android.volley.AuthFailureError;
@@ -22,10 +25,20 @@ import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.example.cupid.Activities.FullProfileActivity;
+import com.example.cupid.Activities.HomeScreen;
 import com.example.cupid.Activities.LiveActivity;
+import com.example.cupid.Activities.LivePreview;
 import com.example.cupid.Adapter.CardsAdapter;
+import com.example.cupid.Adapter.liveRecyclerAdapter;
 import com.example.cupid.Model.CardItem_test;
+import com.example.cupid.Model.LiveModel;
 import com.example.cupid.R;
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
+import com.google.android.gms.ads.MobileAds;
+import com.google.android.gms.ads.initialization.InitializationStatus;
+import com.google.android.gms.ads.initialization.OnInitializationCompleteListener;
+import com.squareup.picasso.Picasso;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -34,6 +47,7 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import de.hdodenhof.circleimageview.CircleImageView;
@@ -49,7 +63,12 @@ import static android.content.Context.MODE_PRIVATE;
 public class DiscoverFragment extends Fragment {
 
     CircleImageView goLive;
+    RecyclerView liveRecycler;
+    List<LiveModel> liveModels;
+    ImageView reload;
+    private AdView mAdView;
 
+    String dp_url;
     private SwipeStack cardStack;
     private CardsAdapter cardsAdapter;
     private ArrayList<CardItem_test> cardItems;
@@ -106,16 +125,132 @@ public class DiscoverFragment extends Fragment {
         // Inflate the layout for this fragment
         View v = inflater.inflate(R.layout.fragment_discover, container, false);
 
+        liveRecycler = v.findViewById(R.id.liveRecycler);
+
         goLive = v.findViewById(R.id.golive);
+        reload = v.findViewById(R.id.reload);
 
         See_full_profile = v.findViewById(R.id.SeeFullProfile);
         cardStack = (SwipeStack) v.findViewById(R.id.container);
+
+        MobileAds.initialize(getContext(), new OnInitializationCompleteListener() {
+            @Override
+            public void onInitializationComplete(InitializationStatus initializationStatus) {
+            }
+        });
+
+        mAdView = v.findViewById(R.id.adView);
+        AdRequest adRequest = new AdRequest.Builder().build();
+        mAdView.loadAd(adRequest);
+
 
         setCardStackAdapter();
         currentPosition = 0;
 
         SharedPreferences sharedPreferences = this.getActivity().getSharedPreferences("Questoins", MODE_PRIVATE);
         String userId = sharedPreferences.getString("userid", "");
+
+        reload.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onRestart();
+
+            }
+        });
+
+        RequestQueue queue = Volley.newRequestQueue(getContext());
+        liveModels = new ArrayList<>();
+        String url = "http://api.betterdate.info/endpoints/broadcast.php";
+
+        JsonArrayRequest request = new JsonArrayRequest(Request.Method.GET, url, null, new Response.Listener<JSONArray>() {
+            @Override
+            public void onResponse(JSONArray response) {
+                for (int i = 0; i < response.length(); i++) {
+                    try {
+                        JSONObject live_user = response.getJSONObject(i);
+                        String userid = live_user.getString("broadUserId");
+                        String broadId = live_user.getString("broadUserBroadId");
+
+                        RequestQueue queue1 = Volley.newRequestQueue(getContext());
+
+                        String url2 = "http://api.betterdate.info/endpoints/user.php";
+                        StringRequest request1 = new StringRequest(Request.Method.POST, url2, new Response.Listener<String>() {
+                            @Override
+                            public void onResponse(String response) {
+
+                                try {
+                                    JSONArray array = new JSONArray(response);
+
+
+                                    for (int i = 0; i < array.length(); i++) {
+
+                                        JSONObject object = array.getJSONObject(i);
+                                        String userDp = object.getString("userDp");
+                                        dp_url = "http://api.betterdate.info/gallery/" + userDp;
+
+                                        // Toast.makeText(getContext(),userid + "\n" + broadId + "\n" + dp_url,Toast.LENGTH_LONG).show();
+
+
+                                        LiveModel liveModel = new LiveModel(userid, broadId, dp_url);
+
+                                        liveModels.add(liveModel);
+
+                                        //    Toast.makeText(getContext(),String.valueOf(liveModels.size()),Toast.LENGTH_LONG).show();
+
+
+                                    }
+
+                                } catch (JSONException e) {
+                                    e.printStackTrace();
+                                }
+                                final liveRecyclerAdapter myadapter = new liveRecyclerAdapter(getContext(), liveModels);
+                                liveRecycler.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, true));
+                                liveRecycler.setAdapter(myadapter);
+                                myadapter.setOnItemClickListener(new liveRecyclerAdapter.OnItemClickListener() {
+                                    @Override
+                                    public void onItemClick(int position) {
+                                        LiveModel selected = liveModels.get(position);
+                                        Intent i = new Intent(getActivity(), LivePreview.class);
+                                        i.putExtra("userid", selected.getUserid());
+                                        i.putExtra("broadid", selected.getBroadId());
+                                        startActivity(i);
+
+                                        //  Toast.makeText(getContext(),selected.getBroadId(),Toast.LENGTH_LONG).show();
+                                    }
+                                });
+                            }
+                        }, new Response.ErrorListener() {
+                            @Override
+                            public void onErrorResponse(VolleyError error) {
+
+                            }
+                        }) {
+                            @Override
+                            protected Map<String, String> getParams() throws AuthFailureError {
+                                Map<String, String> params = new HashMap<>();
+                                params.put("userId", userid);
+                                return params;
+                            }
+                        };
+                        queue1.add(request1);
+
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
+
+
+                }
+
+
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+
+            }
+        });
+        queue.add(request);
+
 
         goLive.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -208,6 +343,14 @@ public class DiscoverFragment extends Fragment {
 
 
         return v;
+    }
+
+    protected void onRestart() {
+
+        Intent i = new Intent(getActivity(), HomeScreen.class);  //your class
+        getActivity().finish();
+        startActivity(i);
+
     }
 
     private void setCardStackAdapter() {

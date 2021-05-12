@@ -1,22 +1,14 @@
 <component name="libraryTable">
   <library name="Gradle: com.karumi:dexter:5.0.0@aar">
     <CLASSES>
-      <root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/d5dd03ad7ac269bf99aa2b0b093ab8d3/jetified-dexter-5.0.0/jars/classes.jar!/" />
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/d5dd03ad7ac269bf99aa2b0b093ab8d3/jetified-dexter-5.0.0/res" />
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/d5dd03ad7ac269bf99aa2b0b093ab8d3/jetified-dexter-5.0.0/AndroidManifest.xml" />
-      <root url="jar://$USER_HOME$/Downloads/COVID-19Tracker-master/COVID-19Tracker-master/.gradle/caches/transforms-2/files-2.1/cfac8b12090970677469f977170a44d8/jetified-dexter-5.0.0/jars/classes.jar!/" />
-      <root url="file://$USER_HOME$/Downloads/COVID-19Tracker-master/COVID-19Tracker-master/.gradle/caches/transforms-2/files-2.1/cfac8b12090970677469f977170a44d8/jetified-dexter-5.0.0/AndroidManifest.xml" />
-      <root url="file://$USER_HOME$/Downloads/COVID-19Tracker-master/COVID-19Tracker-master/.gradle/caches/transforms-2/files-2.1/cfac8b12090970677469f977170a44d8/jetified-dexter-5.0.0/res" />
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/af2f9d85c72d41b54a88d689bc1c1b6a/jetified-dexter-5.0.0/jars/classes.jar!/" />
       <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/af2f9d85c72d41b54a88d689bc1c1b6a/jetified-dexter-5.0.0/res" />
       <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/af2f9d85c72d41b54a88d689bc1c1b6a/jetified-dexter-5.0.0/AndroidManifest.xml" />
-      <root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/af2f9d85c72d41b54a88d689bc1c1b6a/jetified-dexter-5.0.0/jars/classes.jar!/" />
     </CLASSES>
     <JAVADOC>
-      <root url="jar://$USER_HOME$/Downloads/COVID-19Tracker-master/COVID-19Tracker-master/.gradle/caches/modules-2/files-2.1/com.karumi/dexter/5.0.0/49b366b0d65dde2fdd0b9dffc2cba3e0e875caac/dexter-5.0.0-javadoc.jar!/" />
       <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.karumi/dexter/5.0.0/49b366b0d65dde2fdd0b9dffc2cba3e0e875caac/dexter-5.0.0-javadoc.jar!/" />
     </JAVADOC>
     <SOURCES>
-      <root url="jar://$USER_HOME$/Downloads/COVID-19Tracker-master/COVID-19Tracker-master/.gradle/caches/modules-2/files-2.1/com.karumi/dexter/5.0.0/c2d1f7314d3761008b381eb349bba66d8dcc3018/dexter-5.0.0-sources.jar!/" />
       <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.karumi/dexter/5.0.0/c2d1f7314d3761008b381eb349bba66d8dcc3018/dexter-5.0.0-sources.jar!/" />
     </SOURCES>
   </library>

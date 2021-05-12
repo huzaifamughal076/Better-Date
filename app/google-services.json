@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "559741498872",
+    "project_id": "betterdate-adce1",
+    "storage_bucket": "betterdate-adce1.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:559741498872:android:c33c3c701d284a97ef920d",
+        "android_client_info": {
+          "package_name": "com.example.cupid"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "559741498872-vtc4msf32rtmbggcg7ka76uf4abc308e.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDgdWsV1esmhXpOoJ91Hy4KEyT17qYcjAk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "559741498872-vtc4msf32rtmbggcg7ka76uf4abc308e.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

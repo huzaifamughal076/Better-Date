@@ -312,7 +312,7 @@ public class SignupSuccessfullActivity extends AppCompatActivity {
                                 startActivity(i);
                                 finish();
                             } else {
-                                Toast.makeText(getApplicationContext(), Qu1 + "\n" + Qu2 + "\n" + Qu3 + "\n" + Qu4 + "\n" + Qu5 + "\n" + Qu6 + "\n" + Qu7 + "\n" + Qu8 + "\n" + Qu9 + "\n" + Qu10 + "\n" + Qu11 + "\n" + Qu12 + "\n" + Qu13 + "\n" + Qu14 + "\n" + Qu15 + "\n", Toast.LENGTH_LONG).show();
+                                //Toast.makeText(getApplicationContext(), Qu1 + "\n" + Qu2 + "\n" + Qu3 + "\n" + Qu4 + "\n" + Qu5 + "\n" + Qu6 + "\n" + Qu7 + "\n" + Qu8 + "\n" + Qu9 + "\n" + Qu10 + "\n" + Qu11 + "\n" + Qu12 + "\n" + Qu13 + "\n" + Qu14 + "\n" + Qu15 + "\n", Toast.LENGTH_LONG).show();
                                 return;
                             }
                         } catch (JSONException e) {
