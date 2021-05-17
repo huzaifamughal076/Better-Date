@@ -35,12 +35,13 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.NoActionBar"
         android:usesCleartextTraffic="true">
+        <activity android:name=".Activities.ChannelActivity"></activity>
 
         <meta-data
             android:name="com.google.android.gms.ads.APPLICATION_ID"
-            android:value="ca-app-pub-3940256099942544~3347511713"/>
+            android:value="ca-app-pub-3940256099942544~3347511713" />
 
-        <activity android:name=".Activities.LivePreview"></activity>
+        <activity android:name=".Activities.LivePreview" />
         <activity android:name=".Activities.LiveActivity" />
         <activity
             android:name=".Activities.EditImages"
