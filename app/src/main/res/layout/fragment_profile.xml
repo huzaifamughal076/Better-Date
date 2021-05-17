@@ -7,11 +7,24 @@
     android:orientation="vertical"
     tools:context=".Fragments.ProfileFragment">
 
-
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:orientation="vertical">
+        <WebView
+            android:id="@+id/webView"
+            android:layout_width="match_parent"
+            android:visibility="gone"
+            android:layout_height="match_parent">
+
+        </WebView>
+
+    <LinearLayout
+        android:id="@+id/main_profile_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:visibility="visible">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -151,11 +164,12 @@
             android:text="JOIN A-LIST" />
 
         <Button
+            android:id="@+id/getboost"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="12dp"
             android:layout_marginBottom="12dp"
-            android:backgroundTint="#FF00F2"
+            android:backgroundTint="@color/logocolor"
             android:text="GET BOOST" />
 
         <LinearLayout
@@ -294,4 +308,7 @@
     </LinearLayout>
 
     </LinearLayout>
+
+    </LinearLayout>
+
 </ScrollView>

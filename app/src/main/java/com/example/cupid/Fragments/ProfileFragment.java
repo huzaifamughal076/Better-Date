@@ -5,12 +5,17 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 
+import androidx.activity.OnBackPressedCallback;
 import androidx.fragment.app.Fragment;
 import androidx.viewpager.widget.ViewPager;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.webkit.WebSettings;
+import android.webkit.WebView;
+import android.webkit.WebViewClient;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -24,6 +29,7 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.example.cupid.Activities.EditProfile;
+import com.example.cupid.Activities.HomeScreen;
 import com.example.cupid.Activities.Profile_Preferences;
 import com.example.cupid.Activities.Profile_Settings;
 import com.example.cupid.Adapter.ViewPagerAdaper;
@@ -57,10 +63,13 @@ public class ProfileFragment extends Fragment {
     TextView username,userAge;
     ViewPager viewPager;
     ViewPagerAdaper viewPagerAdapter;
+    Button getBoost;
+    WebView webView;
 
 
     LinearLayout preferences;
     LinearLayout settings;
+    LinearLayout main_profile_layout;
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -111,10 +120,46 @@ public class ProfileFragment extends Fragment {
         profile_pic = v.findViewById(R.id.profile_Pic);
         userAge=v.findViewById(R.id.userAge);
         username=v.findViewById(R.id.username);
+        getBoost=v.findViewById(R.id.getboost);
+        webView=v.findViewById(R.id.webView);
+        main_profile_layout=v.findViewById(R.id.main_profile_layout);
 
-        RequestQueue queue = Volley.newRequestQueue(getContext());
+
         SharedPreferences sharedPreferences = this.getActivity().getSharedPreferences("Questoins", MODE_PRIVATE);
         String userId = sharedPreferences.getString("userid", "");
+
+        getBoost.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                main_profile_layout.setVisibility(View.GONE);
+                webView.setVisibility(View.VISIBLE);
+                webView.setWebViewClient(new WebViewClient());
+                webView.loadUrl("http://admin.betterdate.info/buy-boost.php?id="+userId);
+                WebSettings webSettings=webView.getSettings();
+                webSettings.setJavaScriptEnabled(true);
+
+            }
+        });
+        OnBackPressedCallback callback = new OnBackPressedCallback(true /* enabled by default */) {
+            @Override
+            public void handleOnBackPressed() {
+                // Handle the back button event
+//                    main_profile_layout.setVisibility(View.VISIBLE);
+//                    webView.setVisibility(View.GONE);
+//                    webView.goBack();
+
+                Intent i = new Intent(getActivity(), HomeScreen.class);  //your class
+                getActivity().finish();
+                startActivity(i);
+
+            }
+        };
+        requireActivity().getOnBackPressedDispatcher().addCallback(getActivity(), callback);
+
+
+
+
+        RequestQueue queue = Volley.newRequestQueue(getContext());
 
         String url = "http://api.betterdate.info/endpoints/user.php";
         ProgressDialog dialog = ProgressDialog.show(getActivity(), "",
@@ -212,6 +257,7 @@ public class ProfileFragment extends Fragment {
 
         return v;
     }
+
 
     private String getAge(int year, int month, int day) {
 
