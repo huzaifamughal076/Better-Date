@@ -1,14 +1,25 @@
 package com.example.cupid.BoostFragment;
 
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 
+import androidx.activity.OnBackPressedCallback;
 import androidx.fragment.app.Fragment;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.webkit.WebSettings;
+import android.webkit.WebView;
+import android.webkit.WebViewClient;
+import android.widget.ImageView;
+import android.widget.Toast;
 
+import com.example.cupid.Activities.HomeScreen;
 import com.example.cupid.R;
+
+import static android.content.Context.MODE_PRIVATE;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -16,6 +27,9 @@ import com.example.cupid.R;
  * create an instance of this fragment.
  */
 public class FirstBoost extends Fragment {
+
+    ImageView boostImg;
+    WebView webViewBoost;
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -61,6 +75,41 @@ public class FirstBoost extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_first_boost, container, false);
+        View v = inflater.inflate(R.layout.fragment_first_boost, container, false);
+
+        SharedPreferences sharedPreferences = this.getActivity().getSharedPreferences("Questoins", MODE_PRIVATE);
+        String userId = sharedPreferences.getString("userid", "");
+
+        boostImg = v.findViewById(R.id.boostImg);
+        webViewBoost=v.findViewById(R.id.webViewboost);
+
+        boostImg.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                webViewBoost.setVisibility(View.VISIBLE);
+                webViewBoost.setWebViewClient(new WebViewClient());
+                webViewBoost.loadUrl("http://admin.betterdate.info/buy-boost.php?id=" + userId);
+                WebSettings webSettings = webViewBoost.getSettings();
+                webSettings.setJavaScriptEnabled(true);
+            }
+        });
+        OnBackPressedCallback callback = new OnBackPressedCallback(true /* enabled by default */) {
+            @Override
+            public void handleOnBackPressed() {
+                // Handle the back button event
+//                    main_profile_layout.setVisibility(View.VISIBLE);
+//                    webView.setVisibility(View.GONE);
+//                    webView.goBack();
+
+                Intent i = new Intent(getActivity(), HomeScreen.class);  //your class
+                getActivity().finish();
+                startActivity(i);
+
+            }
+        };
+        requireActivity().getOnBackPressedDispatcher().addCallback(getActivity(), callback);
+
+
+        return v;
     }
 }

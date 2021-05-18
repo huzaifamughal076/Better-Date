@@ -6,9 +6,11 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 
 import androidx.activity.OnBackPressedCallback;
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.viewpager.widget.ViewPager;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -34,6 +36,16 @@ import com.example.cupid.Activities.Profile_Preferences;
 import com.example.cupid.Activities.Profile_Settings;
 import com.example.cupid.Adapter.ViewPagerAdaper;
 import com.example.cupid.R;
+import com.google.android.gms.ads.AdError;
+import com.google.android.gms.ads.AdListener;
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.FullScreenContentCallback;
+import com.google.android.gms.ads.LoadAdError;
+import com.google.android.gms.ads.MobileAds;
+import com.google.android.gms.ads.initialization.InitializationStatus;
+import com.google.android.gms.ads.initialization.OnInitializationCompleteListener;
+import com.google.android.gms.ads.interstitial.InterstitialAd;
+import com.google.android.gms.ads.interstitial.InterstitialAdLoadCallback;
 import com.google.android.material.tabs.TabLayout;
 import com.squareup.picasso.Picasso;
 
@@ -60,16 +72,21 @@ public class ProfileFragment extends Fragment {
 
     ImageView editprofile;
     CircleImageView profile_pic;
-    TextView username,userAge;
+    TextView username, userAge, available_coins;
     ViewPager viewPager;
     ViewPagerAdaper viewPagerAdapter;
     Button getBoost;
+    Button buyCoins;
     WebView webView;
 
 
     LinearLayout preferences;
     LinearLayout settings;
     LinearLayout main_profile_layout;
+
+    private static final String AD_UNIT_ID = "ca-app-pub-3940256099942544/1033173712";
+    private static final String TAG = "MyActivity";
+    private InterstitialAd interstitialAd;
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -118,11 +135,20 @@ public class ProfileFragment extends Fragment {
         TabLayout tabLayout;
 
         profile_pic = v.findViewById(R.id.profile_Pic);
-        userAge=v.findViewById(R.id.userAge);
-        username=v.findViewById(R.id.username);
-        getBoost=v.findViewById(R.id.getboost);
-        webView=v.findViewById(R.id.webView);
-        main_profile_layout=v.findViewById(R.id.main_profile_layout);
+        userAge = v.findViewById(R.id.userAge);
+        username = v.findViewById(R.id.username);
+        getBoost = v.findViewById(R.id.getboost);
+        buyCoins = v.findViewById(R.id.buycoins);
+        webView = v.findViewById(R.id.webView);
+        available_coins = v.findViewById(R.id.availablecoins);
+
+        main_profile_layout = v.findViewById(R.id.main_profile_layout);
+        MobileAds.initialize(getContext(), new OnInitializationCompleteListener() {
+            @Override
+            public void onInitializationComplete(InitializationStatus initializationStatus) {
+            }
+        });
+        loadAd();
 
 
         SharedPreferences sharedPreferences = this.getActivity().getSharedPreferences("Questoins", MODE_PRIVATE);
@@ -134,8 +160,20 @@ public class ProfileFragment extends Fragment {
                 main_profile_layout.setVisibility(View.GONE);
                 webView.setVisibility(View.VISIBLE);
                 webView.setWebViewClient(new WebViewClient());
-                webView.loadUrl("http://admin.betterdate.info/buy-boost.php?id="+userId);
-                WebSettings webSettings=webView.getSettings();
+                webView.loadUrl("http://admin.betterdate.info/buy-boost.php?id=" + userId);
+                WebSettings webSettings = webView.getSettings();
+                webSettings.setJavaScriptEnabled(true);
+
+            }
+        });
+        buyCoins.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                main_profile_layout.setVisibility(View.GONE);
+                webView.setVisibility(View.VISIBLE);
+                webView.setWebViewClient(new WebViewClient());
+                webView.loadUrl("http://admin.betterdate.info/buy-coins.php?id=" + userId);
+                WebSettings webSettings = webView.getSettings();
                 webSettings.setJavaScriptEnabled(true);
 
             }
@@ -157,8 +195,6 @@ public class ProfileFragment extends Fragment {
         requireActivity().getOnBackPressedDispatcher().addCallback(getActivity(), callback);
 
 
-
-
         RequestQueue queue = Volley.newRequestQueue(getContext());
 
         String url = "http://api.betterdate.info/endpoints/user.php";
@@ -178,6 +214,7 @@ public class ProfileFragment extends Fragment {
                         String name = object.getString("userName");
                         String dob = object.getString("userDob");
                         String userDp = object.getString("userDp");
+                        String coins = "Coins : " + object.getString("coins");
 
                         //  Toast.makeText(getApplicationContext(), response, Toast.LENGTH_LONG).show();
 
@@ -187,6 +224,7 @@ public class ProfileFragment extends Fragment {
 
                         username.setText(name);
                         userAge.setText(age);
+                        available_coins.setText(coins);
 
                         Picasso.get().load(dp_url).placeholder(R.drawable.download).into(profile_pic);
                     }
@@ -248,6 +286,7 @@ public class ProfileFragment extends Fragment {
             @Override
             public void onClick(View v) {
 
+                showInterstitial();
                 Intent i = new Intent(getActivity(), EditProfile.class);
                 startActivity(i);
 
@@ -257,6 +296,75 @@ public class ProfileFragment extends Fragment {
 
         return v;
     }
+
+    private void loadAd() {
+        AdRequest adRequest = new AdRequest.Builder().build();
+        InterstitialAd.load(
+                getContext(),
+                AD_UNIT_ID,
+                adRequest,
+                new InterstitialAdLoadCallback() {
+                    @Override
+                    public void onAdLoaded(@NonNull InterstitialAd interstitialAd) {
+                        // The mInterstitialAd reference will be null until
+                        // an ad is loaded.
+                        ProfileFragment.this.interstitialAd = interstitialAd;
+                        Log.i(TAG, "onAdLoaded");
+                        //  Toast.makeText(ProfileFragment.this, "onAdLoaded()", Toast.LENGTH_SHORT).show();
+                        interstitialAd.setFullScreenContentCallback(
+                                new FullScreenContentCallback() {
+                                    @Override
+                                    public void onAdDismissedFullScreenContent() {
+                                        // Called when fullscreen content is dismissed.
+                                        // Make sure to set your reference to null so you don't
+                                        // show it a second time.
+                                        ProfileFragment.this.interstitialAd = null;
+                                        Log.d("TAG", "The ad was dismissed.");
+                                    }
+
+                                    @Override
+                                    public void onAdFailedToShowFullScreenContent(AdError adError) {
+                                        // Called when fullscreen content failed to show.
+                                        // Make sure to set your reference to null so you don't
+                                        // show it a second time.
+                                        ProfileFragment.this.interstitialAd = null;
+                                        Log.d("TAG", "The ad failed to show.");
+                                    }
+
+                                    @Override
+                                    public void onAdShowedFullScreenContent() {
+                                        // Called when fullscreen content is shown.
+                                        Log.d("TAG", "The ad was shown.");
+                                    }
+                                });
+                    }
+
+                    @Override
+                    public void onAdFailedToLoad(@NonNull LoadAdError loadAdError) {
+                        // Handle the error
+                        Log.i(TAG, loadAdError.getMessage());
+                        interstitialAd = null;
+
+                        String error =
+                                String.format(
+                                        "domain: %s, code: %d, message: %s",
+                                        loadAdError.getDomain(), loadAdError.getCode(), loadAdError.getMessage());
+//                        Toast.makeText(
+//                                MainActivity.this, "onAdFailedToLoad() with error: " + error, Toast.LENGTH_SHORT)
+//                                .show();
+                    }
+                });
+    }
+    private void showInterstitial() {
+        // Show the ad if it's ready. Otherwise toast and restart the game.
+        if (interstitialAd != null) {
+            interstitialAd.show(getActivity());
+        } else {
+           // Toast.makeText(this, "Ad did not load", Toast.LENGTH_SHORT).show();
+            //startGame();
+        }
+    }
+
 
 
     private String getAge(int year, int month, int day) {

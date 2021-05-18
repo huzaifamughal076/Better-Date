@@ -4,37 +4,22 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:background="@color/white"
     tools:context=".BoostFragment.FirstBoost">
 
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textColor="@color/black"
-        android:text="BOOST"
-        android:layout_margin="10dp"
-        android:textSize="15sp"
-        android:textStyle="bold"
-        android:layout_gravity="center"
-        android:padding="4dp"
-        />
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Get Boost your account for a whole day"
-        android:gravity="center"
-        android:layout_gravity="center"
-        android:textColor="@color/black"
-        />
+    <WebView
+        android:id="@+id/webViewboost"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="gone"></WebView>
+
 
     <ImageView
+        android:id="@+id/boostImg"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:src="@drawable/boost"
-        />
-
-
-
+        android:layout_height="match_parent"
+        android:src="@drawable/boost" />
 
 
 </LinearLayout>

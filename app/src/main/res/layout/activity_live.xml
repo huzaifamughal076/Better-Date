@@ -33,4 +33,5 @@
         android:src="@drawable/rotatecamera"
         android:padding="12dp"
         android:layout_alignParentRight="true" />
+
 </RelativeLayout>

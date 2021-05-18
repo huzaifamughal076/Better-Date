@@ -8,6 +8,7 @@
     </JAVADOC>
     <SOURCES>
       <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.github.mrmike/ok2curl/0.7.0/3df3c62a1f1f65b903817a8f5c24841603be7ffd/ok2curl-0.7.0-sources.jar!/" />
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.github.mrmike/ok2curl/0.7.0/e3d5e3fa88cc6ba172c3ec67637d01aa042c02e6/ok2curl-0.7.0-sources.jar!/" />
     </SOURCES>
   </library>
 </component>
