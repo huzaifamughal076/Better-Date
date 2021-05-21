@@ -6,6 +6,6 @@
     <de.hdodenhof.circleimageview.CircleImageView
         android:id="@+id/live_id"
         android:layout_marginHorizontal="6dp"
-        android:layout_width="60dp"
-        android:layout_height="60dp"/>
+        android:layout_width="50dp"
+        android:layout_height="50dp"/>
 </LinearLayout>

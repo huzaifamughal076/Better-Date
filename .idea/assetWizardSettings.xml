@@ -340,7 +340,7 @@
                                 <PersistentState>
                                   <option name="values">
                                     <map>
-                                      <entry key="url" value="file:$USER_HOME$/Android/Sdk/icons/material/materialicons/keyboard_arrow_right/baseline_keyboard_arrow_right_24.xml" />
+                                      <entry key="url" value="file:$USER_HOME$/Android/Sdk/icons/material/materialicons/close/baseline_close_24.xml" />
                                     </map>
                                   </option>
                                 </PersistentState>
@@ -350,8 +350,8 @@
                         </option>
                         <option name="values">
                           <map>
-                            <entry key="color" value="0e00ff" />
-                            <entry key="outputName" value="see_full_profile" />
+                            <entry key="color" value="f24e69" />
+                            <entry key="outputName" value="close_pink" />
                             <entry key="sourceFile" value="$USER_HOME$/C:\Users\huzai\AndroidStudioProjects\CupId" />
                           </map>
                         </option>

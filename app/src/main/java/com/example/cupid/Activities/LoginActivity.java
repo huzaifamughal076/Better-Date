@@ -39,7 +39,7 @@ public class LoginActivity extends AppCompatActivity {
 
     EditText password, username;
     CheckBox checkBox;
-    TextView click_here;
+    TextView click_here,forgetPassword;
     ImageView img;
     Button Login;
 
@@ -56,9 +56,17 @@ public class LoginActivity extends AppCompatActivity {
         checkBox = findViewById(R.id.showpass);
         click_here = findViewById(R.id.move_to_signup);
         Login = findViewById(R.id.login);
+        forgetPassword=findViewById(R.id.forgetPassword);
 
         queue = Volley.newRequestQueue(this);
 
+        forgetPassword.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i=new Intent(LoginActivity.this,ForgetPasswordActivity.class);
+                startActivity(i);
+            }
+        });
         Login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

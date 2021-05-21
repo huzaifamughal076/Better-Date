@@ -14,7 +14,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.Toast;
+import android.widget.VideoView;
 
 import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
@@ -61,6 +63,9 @@ import static android.content.Context.MODE_PRIVATE;
  * create an instance of this fragment.
  */
 public class DiscoverFragment extends Fragment {
+
+    VideoView videoView2;
+    ProgressBar vidLoading;
 
     CircleImageView goLive;
     RecyclerView liveRecycler;

@@ -53,13 +53,15 @@
 
                 />
             <RelativeLayout
+                android:id="@+id/getpremium"
                 android:layout_width="match_parent"
                 android:background="@color/white"
                 android:layout_height="wrap_content">
                 <TextView
+
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Get OkCupid Premium"
+                    android:text="Get BetterDate Premium"
                     android:textColor="#6C6868"
                     android:textSize="15sp"
                     android:padding="10dp"
@@ -208,13 +210,14 @@
                 android:background="#CFCCCC"
                 />
             <RelativeLayout
+                android:id="@+id/withdraw_coins"
                 android:layout_width="match_parent"
                 android:background="@color/white"
                 android:layout_height="wrap_content">
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Connections"
+                    android:text="Withdraw Coins"
                     android:textColor="#6C6868"
                     android:textSize="15sp"
                     android:padding="10dp"
@@ -295,6 +298,7 @@
                 android:background="#CFCCCC"
                 />
             <RelativeLayout
+                android:id="@+id/disable_account"
                 android:layout_width="match_parent"
                 android:background="@color/white"
                 android:layout_height="wrap_content">
@@ -315,6 +319,7 @@
                 android:background="#CFCCCC"
                 />
             <RelativeLayout
+                android:id="@+id/signout"
                 android:layout_width="match_parent"
                 android:background="@color/white"
                 android:layout_height="wrap_content">
