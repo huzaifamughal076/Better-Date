@@ -4,6 +4,8 @@ import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.media.MediaPlayer;
+import android.net.Uri;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -14,6 +16,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.MediaController;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 import android.widget.VideoView;
@@ -27,6 +30,7 @@ import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.example.cupid.Activities.FullProfileActivity;
+import com.example.cupid.Activities.FullscreenVideo;
 import com.example.cupid.Activities.HomeScreen;
 import com.example.cupid.Activities.LiveActivity;
 import com.example.cupid.Activities.LivePreview;
@@ -66,12 +70,14 @@ public class DiscoverFragment extends Fragment {
 
     VideoView videoView2;
     ProgressBar vidLoading;
+    private int index = 0;
 
     CircleImageView goLive;
     RecyclerView liveRecycler;
     List<LiveModel> liveModels;
     ImageView reload;
     private AdView mAdView;
+
 
     String dp_url;
     private SwipeStack cardStack;
@@ -138,6 +144,94 @@ public class DiscoverFragment extends Fragment {
         See_full_profile = v.findViewById(R.id.SeeFullProfile);
         cardStack = (SwipeStack) v.findViewById(R.id.container);
 
+        videoView2=v.findViewById(R.id.videoView2);
+        vidLoading=v.findViewById(R.id.vidLoading);
+
+        String vidurl = "http://api.betterdate.info/endpoints/video.php";
+
+        RequestQueue queue3 = Volley.newRequestQueue(getContext());
+
+        ArrayList<String> videonames = new ArrayList<String>();
+        JsonArrayRequest requesty = new JsonArrayRequest(Request.Method.GET, vidurl, null, new Response.Listener<JSONArray>() {
+            @Override
+            public void onResponse(JSONArray response) {
+
+                for (int i = 0; i < response.length(); i++) {
+                    try {
+                        JSONObject object = response.getJSONObject(i);
+                        String vidname = object.getString("videoName");
+
+                        videonames.add(vidname);
+
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
+                }
+
+                int size = (videonames.size()) - 1;
+                videoView2.requestFocus();
+                String videourl = "http://admin.betterdate.info/video/" + videonames.get(index);
+                Uri uri = Uri.parse(videourl);
+                videoView2.setVideoURI(uri);
+                videoView2.setOnPreparedListener(new MediaPlayer.OnPreparedListener() {
+                    @Override
+                    public void onPrepared(MediaPlayer mp) {
+                        vidLoading.setVisibility(View.GONE);
+                        mp.setVolume(0f, 0f);
+                        videoView2.start();
+                    }
+                });
+
+                videoView2.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+                    @Override
+                    public void onCompletion(MediaPlayer mediaPlayer) {
+                        if (index == size) {
+                            index = -1;
+                        }
+                        index++;
+                        String videourl = "http://admin.betterdate.info/video/" + videonames.get(index);
+                        Uri uri = Uri.parse(videourl);
+                        videoView2.setVideoURI(uri);
+                    }
+                });
+
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+
+            }
+        });
+        requesty.setShouldCache(false);
+        queue3.add(requesty);
+
+
+
+
+        MediaController mediaController=new MediaController(getContext());
+        mediaController.setAnchorView(videoView2);
+
+//        Uri uri=Uri.parse("http://admin.betterdate.info/video/47003.mp4");
+//       // videoView2.setMediaController(mediaController);
+//        videoView2.setVideoURI(uri);
+//        videoView2.start();
+
+//        videoView2.setOnPreparedListener(new MediaPlayer.OnPreparedListener() {
+//            @Override
+//            public void onPrepared(MediaPlayer mediaPlayer) {
+//                vidLoading.setVisibility(View.GONE);
+//                mediaPlayer.setVolume(0f, 0f);
+//
+//            }
+//        });
+        videoView2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i=new Intent(getActivity(), FullscreenVideo.class);
+                startActivity(i);
+            }
+        });
+
         MobileAds.initialize(getContext(), new OnInitializationCompleteListener() {
             @Override
             public void onInitializationComplete(InitializationStatus initializationStatus) {
@@ -164,8 +258,10 @@ public class DiscoverFragment extends Fragment {
         });
 
         RequestQueue queue = Volley.newRequestQueue(getContext());
+        RequestQueue queue1 = Volley.newRequestQueue(getContext());
         liveModels = new ArrayList<>();
         String url = "http://api.betterdate.info/endpoints/broadcast.php";
+
 
         JsonArrayRequest request = new JsonArrayRequest(Request.Method.GET, url, null, new Response.Listener<JSONArray>() {
             @Override
@@ -176,7 +272,6 @@ public class DiscoverFragment extends Fragment {
                         String userid = live_user.getString("broadUserId");
                         String broadId = live_user.getString("broadUserBroadId");
 
-                        RequestQueue queue1 = Volley.newRequestQueue(getContext());
 
                         String url2 = "http://api.betterdate.info/endpoints/user.php";
                         StringRequest request1 = new StringRequest(Request.Method.POST, url2, new Response.Listener<String>() {

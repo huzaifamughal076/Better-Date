@@ -35,7 +35,8 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.NoActionBar"
         android:usesCleartextTraffic="true">
-        <activity android:name=".Activities.ForgetPasswordActivity"></activity>
+        <activity android:name=".Activities.FullscreenVideo"></activity>
+        <activity android:name=".Activities.ForgetPasswordActivity" />
         <activity android:name=".Activities.WithdrawCoins" />
         <activity android:name=".Activities.ChannelActivity" />
 
@@ -79,6 +80,7 @@
             android:theme="@style/Theme.AppCompat.DayNight.NoActionBar" />
         <activity
             android:name=".Activities.HomeScreen"
+            android:screenOrientation="portrait"
             android:theme="@style/Theme.AppCompat.DayNight.NoActionBar" />
         <activity
             android:name=".Activities.SignUpActivity"
