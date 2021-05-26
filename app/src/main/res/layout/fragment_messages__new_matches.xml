@@ -8,6 +8,13 @@
     android:background="@color/white"
     tools:context=".MessagesFragments.messages_NewMatches">
 
+
+    <WebView
+        android:id="@+id/webViewboost4"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="gone"></WebView>
+
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -28,6 +35,7 @@
         />
 
     <ImageView
+        android:id="@+id/boostimg4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:src="@drawable/boost"

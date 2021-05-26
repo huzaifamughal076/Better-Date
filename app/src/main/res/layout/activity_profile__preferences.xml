@@ -142,16 +142,48 @@
                 android:textSize="15sp"
                 android:padding="10dp"
                 />
-            <TextView
+            <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="18 - 32 "
-                android:textColor="#6C6868"
-                android:drawableRight="@drawable/ic_baseline_arrow_forward_ios_24"
                 android:layout_alignParentRight="true"
-                android:textSize="15sp"
-                android:padding="10dp"
-                />
+                android:paddingHorizontal="10dp"
+                android:orientation="horizontal">
+                <TextView
+                    android:id="@+id/from_ages"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="15sp"
+                    android:textColor="#6C6868"
+                    android:textColorHint="#6C6868"
+                    android:text="18"
+                    />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="15sp"
+                    android:textColor="#6C6868"
+                    android:text="-"
+                    android:padding="5dp"/>
+                <TextView
+                    android:id="@+id/to_ages"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="15sp"
+                    android:textColor="#6C6868"
+                    android:textColorHint="#6C6868"
+                    android:text="30"
+                    />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="4dp"
+                    android:drawableRight="@drawable/ic_baseline_arrow_forward_ios_24"
+                    />
+
+
+            </LinearLayout>
 
         </RelativeLayout>
         <View
@@ -172,17 +204,46 @@
                 android:textSize="15sp"
                 android:padding="10dp"
                 />
-            <TextView
+            <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="100 miles"
-                android:drawableRight="@drawable/ic_baseline_arrow_forward_ios_24"
                 android:layout_alignParentRight="true"
-                android:textColor="#6C6868"
-                android:textSize="15sp"
-                android:padding="10dp"
-                />
+                android:paddingHorizontal="10dp"
+                android:orientation="horizontal">
+                <TextView
+                    android:id="@+id/from_dis"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="15sp"
+                    android:textColor="#6C6868"
+                    android:text="5"
+                    />
 
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="15sp"
+                    android:textColor="#6C6868"
+                    android:text="-"
+                    android:padding="5dp"/>
+                <TextView
+                    android:id="@+id/to_dis"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="15sp"
+                    android:textColor="#6C6868"
+                    android:text="20"
+                    />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="4dp"
+                    android:drawableRight="@drawable/ic_baseline_arrow_forward_ios_24"
+                    />
+
+
+            </LinearLayout>
         </RelativeLayout>
         <View
             android:layout_width="match_parent"
@@ -252,7 +313,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Body type"
+                    android:text="My Body type"
                     android:textColor="#6C6868"
                     android:textSize="15sp"
                     android:padding="10dp"

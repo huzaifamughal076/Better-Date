@@ -42,17 +42,19 @@
         android:gravity="center"
         android:textColor="@color/black"
         android:textSize="18sp"
-        android:text="About which miles would you \nwant to search your Partner"
+        android:text="In how much area would you like us to\n search for your partner"
         />
-
+<!--    About which miles would you \nwant to search your Partner-->
 
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
+        android:id="@+id/dis"
         android:orientation="horizontal">
 
         <EditText
+            android:id="@+id/from_distance"
             android:background="@color/white"
             android:layout_width="60dp"
             android:layout_height="wrap_content"
@@ -61,7 +63,7 @@
             android:inputType="number"
             android:textColorHint="#AEABAB"
             android:padding="8dp"
-            android:textColor="#AA9D9D"
+            android:textColor="@color/black"
             />
         <View
             android:layout_gravity="center"
@@ -74,6 +76,7 @@
 
 
         <EditText
+            android:id="@+id/to_distance"
             android:background="@color/white"
             android:layout_width="60dp"
             android:layout_height="wrap_content"
@@ -82,14 +85,25 @@
             android:inputType="number"
             android:textColorHint="#A39E9E"
             android:padding="8dp"
-            android:textColor="#AA9D9D"
+            android:textColor="@color/black"
             />
 
     </LinearLayout>
 
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/dis"
+        android:layout_centerInParent="true"
+        android:layout_margin="10dp"
+        android:text="Write distance in kilometers"
+        android:textColor="@color/black"
+        android:textSize="16sp"/>
+
 
 
     <Button
+        android:id="@+id/savedisbtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"

@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#F3EFEF"
-    tools:context=".Activities.PreferencesAge">
+    tools:context=".Activities.Height">
 
     <RelativeLayout
         android:id="@+id/preferences"
@@ -43,7 +43,7 @@
         android:gravity="center"
         android:textColor="@color/black"
         android:textSize="18sp"
-        android:text="Tell us the average age of your future \nlife partner"
+        android:text="Write your height here."
         />
 
 
@@ -59,36 +59,15 @@
         android:orientation="horizontal">
 
         <EditText
-            android:id="@+id/from_age"
+            android:id="@+id/height"
             android:background="@color/white"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:hint="Start Age"
+            android:hint="Height"
             android:inputType="number"
             android:textColorHint="#AEABAB"
             android:padding="8dp"
 
-            android:textColor="@color/black"
-            />
-        <View
-            android:layout_gravity="center"
-            android:padding="8dp"
-            android:layout_margin="10dp"
-            android:layout_width="30dp"
-            android:layout_height="3dp"
-            android:background="#989393"
-            />
-
-
-        <EditText
-            android:id="@+id/to_age"
-            android:background="@color/white"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:hint="End Age"
-            android:inputType="number"
-            android:textColorHint="#A39E9E"
-            android:padding="8dp"
             android:textColor="@color/black"
             />
 
@@ -97,7 +76,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="You can only write minimum age 18"
+        android:text="Please write your height in (ft)."
         android:textColor="@color/black"
         android:layout_centerInParent="true"
         android:layout_below="@+id/average_dis"

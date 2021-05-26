@@ -32,7 +32,7 @@
         android:layout_height="wrap_content"
         android:textColor="@color/black"
         android:textSize="20sp"
-        android:text="Body type"
+        android:text="My Body type"
         android:padding="15dp"
 
         />

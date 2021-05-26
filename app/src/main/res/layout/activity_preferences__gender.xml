@@ -52,72 +52,45 @@
             android:gravity="center"/>
     </RelativeLayout>
 
-   <LinearLayout
-       android:id="@+id/nothing"
-       android:layout_centerInParent="true"
-       android:layout_width="match_parent"
-       android:layout_height="wrap_content"
-       android:elevation="10dp"
-       android:clipToPadding="false"
-       android:orientation="vertical">
+    <RadioGroup
+        android:id="@+id/nothing"
+        android:layout_centerInParent="true"
+        android:padding="10dp"
+        android:elevation="10dp"
+        android:clipToPadding="false"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:background="@color/white"
+        android:orientation="vertical" >
 
-       <RelativeLayout
-           android:layout_width="match_parent"
-           android:layout_height="wrap_content"
-           android:paddingVertical="8dp"
-           android:background="@color/white"
-           >
+    <RadioButton
+        android:padding="8dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginVertical="8dp"
+        android:layoutDirection="rtl"
+        android:textAlignment="textStart"
+        android:layout_gravity="start"
+        android:text="Man"
+        android:textColor="@color/black"
+        android:buttonTint="@color/black"
+        android:textSize="15sp" />
+        <RadioButton
+            android:padding="8dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginVertical="8dp"
+            android:layoutDirection="rtl"
+            android:textAlignment="textStart"
+            android:layout_gravity="start"
+            android:text="Woman"
+            android:textColor="@color/black"
+            android:buttonTint="@color/black"
+            android:textSize="15sp" />
 
-           <TextView
-               android:layout_width="wrap_content"
-               android:layout_height="wrap_content"
-               android:text="Man"
-               android:padding="8dp"
-               android:textSize="18sp"
-               android:textColor="@color/black"/>
+    </RadioGroup>
 
-           <CheckBox
-               android:id="@+id/man"
-               android:padding="8dp"
-               android:buttonTint="@color/black"
-               android:layout_width="wrap_content"
-               android:layout_height="wrap_content"
-               android:layout_alignParentRight="true"
-               />
-
-
-
-       </RelativeLayout>
-
-       <RelativeLayout
-           android:layout_width="match_parent"
-           android:layout_height="wrap_content"
-           android:paddingVertical="8dp"
-           android:background="@color/white"
-           >
-
-           <TextView
-               android:layout_width="wrap_content"
-               android:layout_height="wrap_content"
-               android:text="Women"
-               android:padding="8dp"
-               android:textSize="18sp"
-               android:textColor="@color/black"/>
-
-           <CheckBox
-               android:id="@+id/women"
-               android:padding="8dp"
-               android:buttonTint="@color/black"
-               android:layout_width="wrap_content"
-               android:layout_height="wrap_content"
-               android:layout_alignParentRight="true"
-               />
-
-
-
-       </RelativeLayout>
-
-   </LinearLayout>
 
     <Button
         android:layout_alignParentBottom="true"
